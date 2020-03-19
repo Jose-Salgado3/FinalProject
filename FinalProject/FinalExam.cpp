@@ -30,7 +30,12 @@ void printMenu();
 
 int main() {
 
+	//Create own deck [array of pointers] pointing to const strings.(array above)
+
+	//52 pointer array.
 	array<const string*, DECK_SIZE> deck;
+	
+	//Sends array of pointers as a reference (&deck) 
 	initializeDeck(&deck);
 
 	int userChoice = -1;
@@ -49,8 +54,17 @@ int main() {
 	return 0;
 }
 
+// Takes in the address of deck as a pointer
+// De-Reference pointers
+
+// Will store the exact same deck as before when this initializes.
+// BUT WITH POINTERS?
+
 void initializeDeck(array<const string*, DECK_SIZE>* deck) {
 	for (size_t i = 0; i < DECK_SIZE; ++i) {
+		//deref pointer at address [i] and store 
+		// store inside memoryaddress and store inside of it memory of cards{i}
+
 		(*deck)[i] = &cards[i];
 	}
 }
