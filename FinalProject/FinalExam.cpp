@@ -100,13 +100,14 @@ void shuffleDeck(array<const string*, DECK_SIZE>* deck) {
 	uniform_int_distribution<unsigned int> randomInt(1, DECK_SIZE);
 
 
-	int randIndex = randomInt(engine);
+	
 
 	int temp;
 
-	for (size_t i = DECK_SIZE; i >= 0; --i)
+	for(int i = DECK_SIZE; i >= 0; --i)
 	{
-		
+		int randIndex = randomInt(engine);
+		cout << randIndex << endl;
 
 	}
 
