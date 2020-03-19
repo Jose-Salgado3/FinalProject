@@ -64,7 +64,7 @@ void initializeDeck(array<const string*, DECK_SIZE>* deck) {
 	for (size_t i = 0; i < DECK_SIZE; ++i) {
 		//deref pointer at address [i] and store 
 		// store inside memoryaddress and store inside of it memory of cards{i}
-
+		//value       address
 		(*deck)[i] = &cards[i];
 	}
 }
@@ -77,10 +77,37 @@ void printMenu() {
 
 void displayDeck(array<const string*, DECK_SIZE> deck) {
 	// TO DO: REPLACE THE BODY OF THIS FUNCTION
+
 	cout << "Display the deck here" << endl;
+
+	for (size_t i = 0; i < DECK_SIZE; ++i)
+	{
+		// This if statement will keep from an out of bounds exception.
+		if (i < DECK_SIZE - 3)
+		{
+			cout << (*deck[i]) << " " << (*deck[i + 1]) << " " << (*deck[i + 2]) << " " << (*deck[i + 3]) << endl;
+		}
+	}
 }
 
 void shuffleDeck(array<const string*, DECK_SIZE>* deck) {
 	// TO DO: REPLACE THE BODY OF THIS FUNCTION
 	cout << "Shuffle the deck here" << endl;
+
+	static default_random_engine engine(static_cast<unsigned int>(time(0)));
+
+	//Non static version of call from random generator.
+	uniform_int_distribution<unsigned int> randomInt(1, DECK_SIZE);
+
+
+	int randIndex = randomInt(engine);
+
+	int temp;
+
+	for (size_t i = DECK_SIZE; i >= 0; --i)
+	{
+		
+
+	}
+
 }
