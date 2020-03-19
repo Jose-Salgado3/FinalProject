@@ -90,7 +90,7 @@ void displayDeck(array<const string*, DECK_SIZE> deck) {
 	}
 }
 
-void shuffleDeck(array<const string*, DECK_SIZE>* deck) {
+void shuffleDeck(array<const string*, DECK_SIZE> * deck) {
 	// TO DO: REPLACE THE BODY OF THIS FUNCTION
 	cout << "Shuffle the deck here" << endl;
 
@@ -98,17 +98,23 @@ void shuffleDeck(array<const string*, DECK_SIZE>* deck) {
 
 	//Non static version of call from random generator.
 	uniform_int_distribution<unsigned int> randomInt(1, DECK_SIZE);
+	int count = 1;
 
-
-	
-
-	int temp;
-
-	for(int i = DECK_SIZE; i >= 0; --i)
+	for(int i = DECK_SIZE - 1; i >= 0; --i)
 	{
 		int randIndex = randomInt(engine);
-		cout << randIndex << endl;
+		// cout << randIndex << (*deck)[i] << endl;
+		
 
+		//if the numbers arent the same index.
+		if (i != randIndex)
+		{
+			cout << &deck[randIndex] << "\n";
+			cout << (*(*deck)[i]) << "\n" << "\n";
+			
+		}
+
+		cout << count;
+		count++;
 	}
-
 }
