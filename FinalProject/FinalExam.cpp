@@ -91,10 +91,14 @@ void displayDeck(array<const string*, DECK_SIZE> deck) {
 	}
 }
 
-void shuffleDeck(array<const string*, DECK_SIZE> * deck) {
+
+
+
+
+
+void shuffleDeck(array<const string*, DECK_SIZE>* deck) {
 	// TO DO: REPLACE THE BODY OF THIS FUNCTION
 	cout << "Shuffle the deck here" << endl;
-	
 
 	static default_random_engine engine(static_cast<unsigned int>(time(0)));
 
@@ -102,50 +106,38 @@ void shuffleDeck(array<const string*, DECK_SIZE> * deck) {
 	uniform_int_distribution<unsigned int> randomInt(1, DECK_SIZE);
 	int count = 1;
 
-	
-	string* p1;
-	
-	for (int i = DECK_SIZE - 1; i >= 0; --i)
+	int* ptr;
+
+	ptr = new int[DECK_SIZE];
+
+	for (int i = DECK_SIZE - 1; i >= 0; i--)
 	{
-		
 		int randIndex = randomInt(engine);
-		// cout << randIndex << (*deck)[i] << endl;
+		int j = randIndex; 
+		auto temp = (&deck[i]);
 
-		auto tempData = (*(*deck)[i]);
-		auto tempLocation = &deck[i];
-		
-		//if the numbers arent the same index.
-		if (i != randIndex)
-		{
-			//cout << &deck[randIndex] << "\n";
-			//cout << (*(*deck)[i]) << "\n" << "\n";
-			cout << tempData << "\n";
-		cout << tempLocation << "\n\n";
-		}
-		//delete p1;
+		//if (i != randIndex)
+		//{
+		//	//cout << &deck[randIndex] << "\n";
+		//	//cout << (*(*deck)[i]) << "\n" << "\n";
 
+		//	(&deck[i]) == (&deck[j]);
+		//	
+		//	(&deck[j] == temp);
+		//}
+
+		//cout << count << endl;
+		//count++;
+		cout << ptr[i];
 	}
+}
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//void shuffleDeck(array<const string*, DECK_SIZE>* deck) {
+//void shuffleDeck(array<const string*, DECK_SIZE> * deck) {
 //	// TO DO: REPLACE THE BODY OF THIS FUNCTION
 //	cout << "Shuffle the deck here" << endl;
+//	
 //
 //	static default_random_engine engine(static_cast<unsigned int>(time(0)));
 //
@@ -153,21 +145,35 @@ void shuffleDeck(array<const string*, DECK_SIZE> * deck) {
 //	uniform_int_distribution<unsigned int> randomInt(1, DECK_SIZE);
 //	int count = 1;
 //
+//	
+//	string* p1;
+//	
 //	for (int i = DECK_SIZE - 1; i >= 0; --i)
 //	{
+//		
 //		int randIndex = randomInt(engine);
 //		// cout << randIndex << (*deck)[i] << endl;
 //
-//
+//		auto tempData = (*(*deck)[i]);
+//		auto tempLocation = &deck[i];
+//		
 //		//if the numbers arent the same index.
 //		if (i != randIndex)
 //		{
-//			cout << &deck[randIndex] << "\n";
-//			cout << (*(*deck)[i]) << "\n" << "\n";
-//
+//			//cout << &deck[randIndex] << "\n";
+//			//cout << (*(*deck)[i]) << "\n" << "\n";
+//			cout << tempData << "\n";
+//		cout << tempLocation << "\n\n";
 //		}
-//
-//		cout << count;
-//		count++;
+//		//delete p1;
+//		delete deck;
 //	}
-}
+//
+//
+//
+//
+
+
+
+
+
