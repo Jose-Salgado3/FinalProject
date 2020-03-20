@@ -25,7 +25,7 @@ const array<string, DECK_SIZE> cards{
 
 void initializeDeck(array<const string*, DECK_SIZE>* deck);
 void displayDeck(array<const string*, DECK_SIZE> deck);
-void shuffleDeck(array<const string*, DECK_SIZE>* deck);
+//void shuffleDeck(array<const string*, DECK_SIZE>* deck);
 void printMenu();
 
 int main() {
@@ -43,7 +43,7 @@ int main() {
 		printMenu();
 		cin >> userChoice;
 		if (userChoice == 1) {
-			shuffleDeck(&deck);
+			//shuffleDeck(&deck);
 		}
 		else if (userChoice == 2) {
 			displayDeck(deck);
@@ -61,6 +61,7 @@ int main() {
 // BUT WITH POINTERS?
 
 void initializeDeck(array<const string*, DECK_SIZE>* deck) {
+
 	for (size_t i = 0; i < DECK_SIZE; ++i) {
 		//deref pointer at address [i] and store 
 		// store inside memoryaddress and store inside of it memory of cards{i}
@@ -77,7 +78,7 @@ void printMenu() {
 
 void displayDeck(array<const string*, DECK_SIZE> deck) {
 	// TO DO: REPLACE THE BODY OF THIS FUNCTION
-
+	
 	cout << "Display the deck here" << endl;
 
 	for (size_t i = 0; i < DECK_SIZE; ++i)
@@ -93,6 +94,7 @@ void displayDeck(array<const string*, DECK_SIZE> deck) {
 void shuffleDeck(array<const string*, DECK_SIZE> * deck) {
 	// TO DO: REPLACE THE BODY OF THIS FUNCTION
 	cout << "Shuffle the deck here" << endl;
+	
 
 	static default_random_engine engine(static_cast<unsigned int>(time(0)));
 
@@ -100,21 +102,72 @@ void shuffleDeck(array<const string*, DECK_SIZE> * deck) {
 	uniform_int_distribution<unsigned int> randomInt(1, DECK_SIZE);
 	int count = 1;
 
-	for(int i = DECK_SIZE - 1; i >= 0; --i)
+	
+	string* p1;
+	
+	for (int i = DECK_SIZE - 1; i >= 0; --i)
 	{
+		
 		int randIndex = randomInt(engine);
 		// cout << randIndex << (*deck)[i] << endl;
-		
 
+		auto tempData = (*(*deck)[i]);
+		auto tempLocation = &deck[i];
+		
 		//if the numbers arent the same index.
 		if (i != randIndex)
 		{
-			cout << &deck[randIndex] << "\n";
-			cout << (*(*deck)[i]) << "\n" << "\n";
-			
+			//cout << &deck[randIndex] << "\n";
+			//cout << (*(*deck)[i]) << "\n" << "\n";
+			cout << tempData << "\n";
+		cout << tempLocation << "\n\n";
 		}
+		//delete p1;
 
-		cout << count;
-		count++;
 	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//void shuffleDeck(array<const string*, DECK_SIZE>* deck) {
+//	// TO DO: REPLACE THE BODY OF THIS FUNCTION
+//	cout << "Shuffle the deck here" << endl;
+//
+//	static default_random_engine engine(static_cast<unsigned int>(time(0)));
+//
+//	//Non static version of call from random generator.
+//	uniform_int_distribution<unsigned int> randomInt(1, DECK_SIZE);
+//	int count = 1;
+//
+//	for (int i = DECK_SIZE - 1; i >= 0; --i)
+//	{
+//		int randIndex = randomInt(engine);
+//		// cout << randIndex << (*deck)[i] << endl;
+//
+//
+//		//if the numbers arent the same index.
+//		if (i != randIndex)
+//		{
+//			cout << &deck[randIndex] << "\n";
+//			cout << (*(*deck)[i]) << "\n" << "\n";
+//
+//		}
+//
+//		cout << count;
+//		count++;
+//	}
 }
