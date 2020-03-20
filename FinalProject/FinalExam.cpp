@@ -81,10 +81,10 @@ void displayDeck(array<const string*, DECK_SIZE> deck) {
 	
 	cout << "Display the deck here" << endl;
 
-	for (size_t i = 0; i < DECK_SIZE; ++i)
+	for (size_t i = 0; i < DECK_SIZE; i += 4)
 	{
 		// This if statement will keep from an out of bounds exception.
-		if (i < DECK_SIZE - 3)
+		if (i < DECK_SIZE - 2)
 		{
 			cout << (*deck[i]) << " " << (*deck[i + 1]) << " " << (*deck[i + 2]) << " " << (*deck[i + 3]) << endl;
 		}
