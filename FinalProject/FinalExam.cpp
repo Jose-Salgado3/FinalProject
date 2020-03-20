@@ -25,7 +25,7 @@ const array<string, DECK_SIZE> cards{
 
 void initializeDeck(array<const string*, DECK_SIZE>* deck);
 void displayDeck(array<const string*, DECK_SIZE> deck);
-//void shuffleDeck(array<const string*, DECK_SIZE>* deck);
+void shuffleDeck(array<const string*, DECK_SIZE>* deck);
 void printMenu();
 
 int main() {
@@ -43,7 +43,7 @@ int main() {
 		printMenu();
 		cin >> userChoice;
 		if (userChoice == 1) {
-			//shuffleDeck(&deck);
+			shuffleDeck(&deck);
 		}
 		else if (userChoice == 2) {
 			displayDeck(deck);
@@ -80,13 +80,13 @@ void displayDeck(array<const string*, DECK_SIZE> deck) {
 	// TO DO: REPLACE THE BODY OF THIS FUNCTION
 	
 	cout << "Display the deck here" << endl;
-
-	for (size_t i = 0; i < DECK_SIZE; ++i)
+	
+	for (size_t i = 0; i < DECK_SIZE; i += 4)
 	{
 		// This if statement will keep from an out of bounds exception.
-		if (i < DECK_SIZE - 3)
+		if (i < DECK_SIZE - 2)
 		{
-			cout << (*deck[i]) << " " << (*deck[i + 1]) << " " << (*deck[i + 2]) << " " << (*deck[i + 3]) << endl;
+			cout << (*deck[i]) << " " << (*deck[i + 1]) << " " << (*deck[i + 2]) << " " << (*deck[i + 3]) << "\n";
 		}
 	}
 }
@@ -103,29 +103,28 @@ void shuffleDeck(array<const string*, DECK_SIZE> * deck) {
 	int count = 1;
 
 	
-	string* p1;
-	
-	for (int i = DECK_SIZE - 1; i >= 0; --i)
+	void* p1;
+	for (int i = DECK_SIZE - 1; i > 0; i--)
 	{
-		
 		int randIndex = randomInt(engine);
-		// cout << randIndex << (*deck)[i] << endl;
-
-		auto tempData = (*(*deck)[i]);
-		auto tempLocation = &deck[i];
+		string temp = (*(*deck)[i]);
 		
-		//if the numbers arent the same index.
+		// Testing to run the loop in reverse using dereferencing shows memory and string stored in memory/
+		cout << (*(*deck)[i]) << " memory is" << &(*deck)[i] << endl;
+		
+		// Have to use double ** to deref a pointer to a pointer
+		//<< (*deck)[i - 2] << " " << (*deck)[i - 3] << " " << (*deck)[i - 4] << endl;
+
 		if (i != randIndex)
 		{
-			//cout << &deck[randIndex] << "\n";
-			//cout << (*(*deck)[i]) << "\n" << "\n";
-			cout << tempData << "\n";
-		cout << tempLocation << "\n\n";
+			
+			//Swap the memory allocations of each index.
+			(*deck)[randIndex] = const_cast<string *>(&temp);
+
 		}
-		//delete p1;
 
 	}
-
+	
 
 
 
