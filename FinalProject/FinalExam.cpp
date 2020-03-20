@@ -119,7 +119,7 @@ void shuffleDeck(array<const string*, DECK_SIZE> * deck) {
 		{
 			
 			//Swap the memory allocations of each index.
-			(*deck)[i] = const_cast<string *>(&temp);
+			(*deck)[randIndex] = const_cast<string *>(&temp);
 
 		}
 
