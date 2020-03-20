@@ -86,7 +86,7 @@ void displayDeck(array<const string*, DECK_SIZE> deck) {
 		// This if statement will keep from an out of bounds exception.
 		if (i < DECK_SIZE - 2)
 		{
-			cout << (*deck[i]) << " " << (*deck[i + 1]) << " " << (*deck[i + 2]) << " " << (*deck[i + 3]) << endl;
+			cout << (*deck[i]) << " " << (*deck[i + 1]) << " " << (*deck[i + 2]) << " " << (*deck[i + 3]) << "\n";
 		}
 	}
 }
@@ -102,20 +102,24 @@ void shuffleDeck(array<const string*, DECK_SIZE> * deck) {
 	uniform_int_distribution<unsigned int> randomInt(1, DECK_SIZE);
 	int count = 1;
 
-	int randIndex = randomInt(engine);
+	
 	void* p1;
 	for (int i = DECK_SIZE - 1; i > 0; i--)
 	{
-	
+		int randIndex = randomInt(engine);
+		string temp = (*(*deck)[i]);
+		
 		// Testing to run the loop in reverse using dereferencing shows memory and string stored in memory/
-		cout << (*(*deck)[i]) << " memory is" << &deck[i] << endl;
+		cout << (*(*deck)[i]) << " memory is" << &(*deck)[i] << endl;
 		
 		// Have to use double ** to deref a pointer to a pointer
 		//<< (*deck)[i - 2] << " " << (*deck)[i - 3] << " " << (*deck)[i - 4] << endl;
 
 		if (i != randIndex)
 		{
+			
 			//Swap the memory allocations of each index.
+			(*deck)[i] = const_cast<string *>(&temp);
 
 		}
 
