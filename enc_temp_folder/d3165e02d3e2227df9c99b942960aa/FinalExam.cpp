@@ -105,8 +105,6 @@ void shuffleDeck(array<const string*, DECK_SIZE> * deck) {
 		uniform_int_distribution<unsigned int> randomInt(0, i);
 
 		int j = randomInt(engine);
-		
-		//debuggint purposes
 		string temp = (*(*deck)[i]);
 
 		if (i != j)
