@@ -100,7 +100,7 @@ void shuffleDeck(array<const string*, DECK_SIZE> * deck) {
 	int count = 1;
 
 	// lOOP TO PERFORM THE SWAP
-	for (int i = DECK_SIZE - 1; i >= 0; i--)
+	for (int i = DECK_SIZE - 1; i >= 0; --i)
 	{	
 		uniform_int_distribution<unsigned int> randomInt(0, i);
 
