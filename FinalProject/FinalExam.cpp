@@ -77,49 +77,36 @@ void printMenu() {
 }
 
 void displayDeck(array<const string*, DECK_SIZE> deck) {
-	
-	cout << "Display the deck here" << endl;
-	
+		
+	// Since 4 cards are printed at a time we use i += 4;
 	for (size_t i = 0; i < DECK_SIZE; i += 4)
 	{
 		// This if statement will keep from an out of bounds exception.
 		if (i < DECK_SIZE - 2)
 		{
-			cout << (*deck[i]) << " " << (*deck[i + 1]) << " " << (*deck[i + 2]) << " " << (*deck[i + 3]) << "\n";
+			cout << "|" << (*deck[i]) << "| "  << "|" << (*deck[i + 1]) << "| " << "|" << (*deck[i + 2]) << "| " << "|" << (*deck[i + 3]) << "|" << "\n";
 		}
 	}
 }
 
-void shuffleDeck(array<const string*, DECK_SIZE> * deck) {
-	// TO DO: REPLACE THE BODY OF THIS FUNCTION
-	cout << "Shuffle the deck here" << endl;
-	
+void shuffleDeck(array<const string*, DECK_SIZE> * deck) {	
+
+	//static engine for random 
 	static default_random_engine engine(static_cast<unsigned int>(time(0)));
 
-	//Non static version of call from random generator.
-	int count = 1;
-
-	// lOOP TO PERFORM THE SWAP
+	// lOOP TO PERFORM THE SWAP Inclusive index basing crashed every time.
 	for (int i = DECK_SIZE - 1; i >= 0; --i)
 	{	
+		//Random generators
 		uniform_int_distribution<unsigned int> randomInt(0, i);
-
 		int j = randomInt(engine);
-		
-		//debuggint purposes
-		string temp = (*(*deck)[i]);
 
 		if (i != j)
 		{
-			//cout << (*deck)[j] << "\n";
-			//cout << (*(*deck)[i]) << "\n" << "\n";
-
+			//Swap memory locations.
 			swap((*deck)[i], (*deck)[j]);
 		}
-		count++;
 	}
-
-	cout << count;
 }	
 
 	
