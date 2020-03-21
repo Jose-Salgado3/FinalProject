@@ -77,7 +77,6 @@ void printMenu() {
 }
 
 void displayDeck(array<const string*, DECK_SIZE> deck) {
-	// TO DO: REPLACE THE BODY OF THIS FUNCTION
 	
 	cout << "Display the deck here" << endl;
 	
@@ -98,23 +97,29 @@ void shuffleDeck(array<const string*, DECK_SIZE> * deck) {
 	static default_random_engine engine(static_cast<unsigned int>(time(0)));
 
 	//Non static version of call from random generator.
-	uniform_int_distribution<unsigned int> randomInt(1, DECK_SIZE -1);
 	int count = 1;
 
 	// lOOP TO PERFORM THE SWAP
-	for (int i = DECK_SIZE - 1; i > 0; i--)
-	{
-		int randIndex = randomInt(engine);
+	for (int i = DECK_SIZE - 1; i >= 0; --i)
+	{	
+		uniform_int_distribution<unsigned int> randomInt(0, i);
+
+		int j = randomInt(engine);
+		
+		//debuggint purposes
 		string temp = (*(*deck)[i]);
 
-		if (i != randIndex && i > 0)
+		if (i != j)
 		{
-			cout << (*deck)[randIndex] << "\n";
-			cout << (*(*deck)[i]) << "\n" << "\n";
+			//cout << (*deck)[j] << "\n";
+			//cout << (*(*deck)[i]) << "\n" << "\n";
 
-			swap((*deck)[i], (*deck)[randIndex]);
+			swap((*deck)[i], (*deck)[j]);
 		}
+		count++;
 	}
+
+	cout << count;
 }	
 
 	
