@@ -115,19 +115,22 @@ void shuffleDeck(array<const string*, DECK_SIZE> * deck) {
 		// Have to use double ** to deref a pointer to a pointer
 		//<< (*deck)[i - 2] << " " << (*deck)[i - 3] << " " << (*deck)[i - 4] << endl;
 
-		//if (i != randIndex)
-		//{
+		if (i != randIndex && i > 0)
+		{
 			
 			//Swap the memory allocations of each index.
+			//cout << (*deck)[randIndex] << "\n";// = const_cast<string*>(&temp);
+			//cout << (*deck)[i] << "\n" << "\n";
+
+
+
 			cout << (*deck)[randIndex] << "\n";// = const_cast<string*>(&temp);
-			cout << (*deck)[i] << "\n" << "\n";
-
-
-
-			cout << (*(*deck)[randIndex]) << "\n";// = const_cast<string*>(&temp);
 			cout << (*(*deck)[i]) << "\n" << "\n";
 
-		//}
+			swap((*deck)[i], (*deck)[randIndex]);
+			
+
+		}
 
 	}
 	
