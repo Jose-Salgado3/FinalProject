@@ -110,18 +110,24 @@ void shuffleDeck(array<const string*, DECK_SIZE> * deck) {
 		string temp = (*(*deck)[i]);
 		
 		// Testing to run the loop in reverse using dereferencing shows memory and string stored in memory/
-		cout << (*(*deck)[i]) << " memory is" << &(*deck)[i] << endl;
+		//cout << (*(*deck)[i]) << " memory is" << &(*deck)[i] << endl;
 		
 		// Have to use double ** to deref a pointer to a pointer
 		//<< (*deck)[i - 2] << " " << (*deck)[i - 3] << " " << (*deck)[i - 4] << endl;
 
-		if (i != randIndex)
-		{
+		//if (i != randIndex)
+		//{
 			
 			//Swap the memory allocations of each index.
-			(*deck)[randIndex] = const_cast<string *>(&temp);
+			cout << (*deck)[randIndex] << "\n";// = const_cast<string*>(&temp);
+			cout << (*deck)[i] << "\n" << "\n";
 
-		}
+
+
+			cout << (*(*deck)[randIndex]) << "\n";// = const_cast<string*>(&temp);
+			cout << (*(*deck)[i]) << "\n" << "\n";
+
+		//}
 
 	}
 	
